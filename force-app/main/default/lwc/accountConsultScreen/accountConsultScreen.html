@@ -1,3 +1,30 @@
 <template>
-    
+    <lightning-card title="Customer Info">
+        <div class="slds-media">
+            <div class="slds-media__figure">
+                <span class="slds-icon_container slds-icon-standard-account">
+                    <lightning-icon icon-name='standard:person_account' alternative-text='Conta' size='medium'
+                        title='Conta'></lightning-icon>
+                </span>
+            </div>
+        </div>
+        <div slot="actions">
+            <lightning-button 
+                label="Transfer Customer" 
+                name="Transfer Customer"
+                onclick={handleTransferCustomerButton}>
+            </lightning-button>
+        </div>
+        <div class="slds-card__body_inner">
+             <p>Accounts: <strong>{selectedAccounts} of {accounts.length}</strong></p>
+            <div class="slds-grid slds-var-p-bottom_x-small slds-var-p-left_x-small">
+                <lightning-input type="search" onchange={handleSearchAccounts}></lightning-input>
+            </div>
+            <lightning-tree-grid
+                key-field="accountId"
+                data={accounts}
+                columns={columns}>
+            </lightning-tree-grid>
+        </div>
+    </lightning-card>
 </template>
